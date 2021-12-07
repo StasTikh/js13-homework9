@@ -29,7 +29,7 @@
         
     };
 
-    console.log(data)
+    //console.log(data)
 
 
     function showBarrows(date1, date2) {
