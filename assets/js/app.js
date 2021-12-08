@@ -13,6 +13,8 @@ createApp({
             title2: "Period #2",
             periodOne: {dateStart: "",
                         dateFinish: ""},
+            periodTwo: {dateStart: "",
+                        dateFinish: ""},
             dataArr: [],
             currency: [],
 
@@ -20,31 +22,33 @@ createApp({
     },
 
     computed: {
-        borrowedSum(){
-            
-            function calc(date1, date2, arr){
-                let sum = 0;
-                    for (let item of arr){
-                        if(item.paydate >= date1 && item.repaydate <= date2){
-                            sum += item.attraction;
-                        }
-                    }
-                    return sum;
-            }
-            return calc(this.periodOne.dateStart, this.periodOne.dateFinish, this.dataArr); 
+        
+        borrowedSuma1() {
+            return this.showBarrows(this.periodOne.dateStart, this.periodOne.dateFinish, this.dataArr)
         },
 
-        owedSum(){
-            function calc(date1, date2, arr){
-                let sum = 0;
-                    for (let item of arr){
-                        if(item.paydate >= date1 && item.repaydate > date2){
-                            sum += item.attraction;
-                        }
-                    }
-                    return sum;
+        owedSuma1() {
+            return this.owedSum(this.periodOne.dateStart, this.periodOne.dateFinish, this.dataArr)
+        },
+
+        borrowedSuma2() {
+            return this.showBarrows(this.periodTwo.dateStart, this.periodTwo.dateFinish, this.dataArr)
+        },
+
+        owedSuma2() {
+            return this.owedSum(this.periodTwo.dateStart, this.periodTwo.dateFinish, this.dataArr)
+        },
+
+        percentOne(){
+            if(this.borrowedSuma2 * this.borrowedSuma1 !== 0){
+                return Math.round(((this.borrowedSuma2 - this.borrowedSuma1) / this.borrowedSuma1) * 100);
             }
-            return calc(this.periodOne.dateStart, this.periodOne.dateFinish, this.dataArr); 
+        },
+
+        percentTwo(){
+            if(this.owedSuma2 * this.owedSuma1 !== 0){
+                return Math.round(((this.owedSuma2 - this.owedSuma1) / this.owedSuma1) * 100);
+            }
         }
     },
     async mounted(){
@@ -91,34 +95,26 @@ createApp({
         };
         this.dataArr = data;
         console.log(this.dataArr, this.currency);
+    },
+
+    methods: {
+        showBarrows(date1, date2, arr){
+                let sum = 0;
+                for (let item of arr){
+                    if(item.paydate >= date1 && item.repaydate <= date2){
+                        sum += item.attraction;
+                    }
+                }
+                return sum;
+        },
+        owedSum(date1, date2, arr){
+                let sum = 0;
+                for (let item of arr){
+                    if(item.paydate >= date1 && item.repaydate > date2){
+                        sum += item.attraction;
+                    }
+                }
+            return sum;
+        }
     }
 }).mount('#app');
-
-
-/*
-periodOneBarrows() {
-            return showBarrows(this.date1per1, this.date2per1);
-        },
-        periodOneOws() {
-            return showOws(this.date1per1, this.date2per1);  
-        },
-        
-        periodTwoBarrows() {
-            return showBarrows(this.date1per2, this.date2per2);
-        },
-        periodTwoOws() {
-            return showOws(this.date1per2, this.date2per2);  
-        },
-
-        percentOne(){
-            if(this.periodTwoBarrows * this.periodOneBarrows !== 0){
-                return Math.round(((this.periodTwoBarrows - this.periodOneBarrows) / this.periodOneBarrows) * 100);
-            }
-        },
-
-        percentTwo(){
-            if(this.periodTwoOws * this.periodOneOws !== 0){
-                return Math.round(((this.periodTwoOws - this.periodOneOws) / this.periodOneOws) * 100);
-            }
-        }
-*/

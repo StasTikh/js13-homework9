@@ -24,13 +24,13 @@
                     <input type="date" v-model='periodOne.dateFinish'>
                 </div> 
                 <div class="card-body">
-                    <h3>Borrowed: <span>{{borrowedSum}} грн.</span></h3>
-                    <h3>Need to ow: <span v-if="borrowedSum">{{owedSum}} грн.</span></h3>
+                    <h3>Borrowed: <span>{{borrowedSuma1}} грн.</span></h3>
+                    <h3>Need to ow: <span v-if="borrowedSuma1">{{owedSuma1}} грн.</span><span v-else>0 грн.</span></h3>
                 </div>
             </div>
-            <!-- <div class="card position-relative">
+            <div class="card position-relative">
                 <div class="position-absolute top-50 start-50 translate-middle">
-                    <h3><span v-if="percentOne > percentTwo"><i class="fas fa-arrow-up">+</i></span><span v-else><i class="fas fa-arrow-down">-</i></span>{{percentOne}}</h3>
+                    <h3><span v-if="percentOne > percentTwo"><i class="fas fa-arrow-up">+</i></span><span v-else><i class="fas fa-arrow-down"></i></span>{{percentOne}}</h3>
                     <h3><span v-if="percentOne < percentTwo"><i class="fas fa-arrow-up">+</i></span><span v-else><i class="fas fa-arrow-down">-</i></span>{{percentTwo}}</h3>
                 </div>
             </div>
@@ -39,14 +39,14 @@
                     <h4>{{title2}}</h4>
                 </div>
                 <div class="d-flex justify-content-between mt-2 p-2"> 
-                    <input type="date" v-model="date1per2">
-                    <input type="date" v-model="date2per2">
+                    <input type="date" v-model='periodTwo.dateStart'>
+                    <input type="date" v-model='periodTwo.dateFinish'>
                 </div> 
                 <div class="card-body">
-                    <h3>Borrowed: <span>{{periodTwoBarrows}} грн.</span></h3>
-                    <h3>Need to ow: <span>{{periodTwoOws}} грн.</span></h3>
+                    <h3>Borrowed: <span>{{borrowedSuma2}} грн.</span></h3>
+                    <h3>Need to ow: <span v-if="borrowedSuma2">{{owedSuma2}} грн.</span><span v-else>0 грн.</span></h3>
                 </div>
-            </div> -->
+            </div> 
         </div>
 
         <!-- <div class="d-flex justify-content-between mt-2 p-2"> 
