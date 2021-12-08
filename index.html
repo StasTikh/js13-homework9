@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="./assets/css/font-awesome.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <script src="./assets/js/app.js" type="module" defer></script>
-    <script src="./assets/js/func.js" type="module" defer></script>
-
+    <script type="module" defer src="./assets/js/func.js"></script>
 </head>
 <body>
     <div class="container mt-5" id="app">
@@ -21,15 +20,15 @@
                     <h4>{{title1}}</h4>
                 </div>
                 <div class="d-flex justify-content-between mt-2 p-2"> 
-                    <input type="date" v-model='date1per1'>
-                    <input type="date" v-model='date2per1'>
+                    <input type="date" v-model='periodOne.dateStart'>
+                    <input type="date" v-model='periodOne.dateFinish'>
                 </div> 
                 <div class="card-body">
-                    <h3>Borrowed: <span v-if="periodOneBarrows.length">{{periodOneBarrows}} грн.</span></h3>
-                    <h3>Need to ow: <span v-if="periodOneOws.length">{{periodOneOws}} грн.</span></h3>
+                    <h3>Borrowed: <span>{{borrowedSum}} грн.</span></h3>
+                    <h3>Need to ow: <span v-if="borrowedSum">{{owedSum}} грн.</span></h3>
                 </div>
             </div>
-            <div class="card position-relative">
+            <!-- <div class="card position-relative">
                 <div class="position-absolute top-50 start-50 translate-middle">
                     <h3><span v-if="percentOne > percentTwo"><i class="fas fa-arrow-up">+</i></span><span v-else><i class="fas fa-arrow-down">-</i></span>{{percentOne}}</h3>
                     <h3><span v-if="percentOne < percentTwo"><i class="fas fa-arrow-up">+</i></span><span v-else><i class="fas fa-arrow-down">-</i></span>{{percentTwo}}</h3>
@@ -44,10 +43,10 @@
                     <input type="date" v-model="date2per2">
                 </div> 
                 <div class="card-body">
-                    <h3>Borrowed: <span v-if="periodTwoBarrows.length">{{periodTwoBarrows}} грн.</span></h3>
-                    <h3>Need to ow: <span v-if="periodTwoOws.length">{{periodTwoOws}} грн.</span></h3>
+                    <h3>Borrowed: <span>{{periodTwoBarrows}} грн.</span></h3>
+                    <h3>Need to ow: <span>{{periodTwoOws}} грн.</span></h3>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <!-- <div class="d-flex justify-content-between mt-2 p-2"> 
