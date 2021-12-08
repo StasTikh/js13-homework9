@@ -101,7 +101,7 @@ createApp({
         showBarrows(date1, date2, arr){
                 let sum = 0;
                 for (let item of arr){
-                    if(item.paydate >= date1 && item.repaydate <= date2){
+                    if(item.paydate >= date1 && item.paydate <= date2){
                         sum += item.attraction;
                     }
                 }
@@ -110,7 +110,7 @@ createApp({
         owedSum(date1, date2, arr){
                 let sum = 0;
                 for (let item of arr){
-                    if(item.paydate >= date1 && item.repaydate > date2){
+                    if(item.repaydate >= date1 && item.repaydate <= date2){
                         sum += item.attraction;
                     }
                 }

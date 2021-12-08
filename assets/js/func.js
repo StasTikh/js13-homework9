@@ -62,10 +62,10 @@
         let owed = 0;
         
         for(let item of data) {
-            if(item.paydate >= date1 && item.repaydate <= date2){
+            if(item.paydate >= date1 && item.paydate <= date2){
                 borrowed += item.attraction;
             
-            } else if (item.paydate >= date1 && item.repaydate > date2) {
+            } else if (item.repaydate >= date1 && item.repaydate <= date2) {
                 owed += item.attraction;
             };
         };
@@ -78,17 +78,17 @@
         let owed = 0;
         
         for(let item of data) {
-            if(item.paydate >= date1 && item.repaydate <= date2){
+            if(item.paydate >= date1 && item.paydate <= date2){
                 borrowed += item.attraction;
             
-            } else if (item.paydate >= date1 && item.repaydate > date2) {
+            } else if (item.repaydate >= date1 && item.repaydate > date2) {
                 owed += item.attraction;
             }
         }; 
         return {owed, date1, date2};
     }
 
-    console.log(showBarrows("2017-02-03", "2021-12-08"))
+    console.log(showBarrows("2021-06-01", "2021-08-31"))
     console.log(showOws("2017-02-03", "2021-12-08"))
 
     export {showBarrows, showOws};
